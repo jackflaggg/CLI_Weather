@@ -21,6 +21,7 @@ export const getKeyValue = async (key: string) => {
         const data = JSON.parse(file);
         return data[key]
     }
+    return null
 }
 
 export const isExist = async (path: string) => {
