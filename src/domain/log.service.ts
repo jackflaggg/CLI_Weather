@@ -1,7 +1,7 @@
 import chalk from 'chalk'
 import dedent from 'dedent'
 
-export const printError = (error: string) => {
+export const printError = (error: any) => {
     console.log(chalk.bgRed(' ERROR ') + ' ' + error)
 }
 

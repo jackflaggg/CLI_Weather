@@ -2,17 +2,16 @@ import {getArgs} from "./helpers/args.js";
 import {printError, printHelp, printSuccess} from "./domain/log.service.js";
 import {saveKeyValue} from "./domain/storage.service.js";
 
-const saveToken = async () => {
+export const saveToken = async (token: any) => {
     try {
-        await saveKeyValue('token', args.t);
+        await saveKeyValue('token', token);
         printSuccess('токен сохранен')
-    } catch (error) {
-        printError(error.message)
+    } catch (e: unknown) {
+        printError(e)
     }
 }
 const initCLI = () => {
     const args = getArgs(process.argv)
-    console.log(args)
 
     if (args.h) {
         printHelp();
