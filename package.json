@@ -1,5 +1,5 @@
 {
-  "name": "weather",
+  "name": "weather-jackflagg",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -27,8 +27,6 @@
   "scripts": {
     "watch": "tsc -w",
     "dev": "yarn nodemon --inspect dist/weather.js",
-    "jest": "jest -i",
-    "jest:coverage": "jest -i --coverage"
   },
   "dependencies": {
     "axios": "^1.7.7",
