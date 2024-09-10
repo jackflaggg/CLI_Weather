@@ -17,7 +17,7 @@ export const saveToken = async (token: string) => {
     }
 }
 
-export const saveCity = async (city: any) => {
+export const saveCity = async (city: string) => {
     if (!city.length) {
         printError('Не передан город!')
         return;
@@ -33,9 +33,13 @@ export const saveCity = async (city: any) => {
 export const getForCast = async () => {
     try {
         const city = process.env.CITY ?? await getKeyValue(TOKEN_DICTIONARY.city);
+
         const weather = await getWeather(city);
+
         printWeather(weather ,getWeather(weather.weather[0].icon))
+
         console.log(weather)
+
     } catch (error) {
         if (isAPIError(error)){
             if (error.response?.status === 404){
@@ -49,7 +53,7 @@ export const getForCast = async () => {
         console.log('непредвиденная ошибка: ' + error)
     }
 }
-const initCLI = (): void | any => {
+const initCLI = () => {
     const args = getArgs(process.argv);
 
     if (args.h) {
@@ -57,7 +61,7 @@ const initCLI = (): void | any => {
     }
 
     if (args.s) {
-        return saveCity(args.s)
+        return saveCity(args.s as string)
     }
 
     if (args.t) {
