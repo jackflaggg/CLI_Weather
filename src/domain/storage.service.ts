@@ -8,6 +8,7 @@ export const TOKEN_DICTIONARY = {
     token: 'token',
     city: 'city',
 }
+
 export const saveKeyValue = async (key: string, value: any) => {
     let data: Record<string, any> = {};
 
