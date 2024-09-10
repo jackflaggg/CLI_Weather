@@ -3,7 +3,7 @@ import {printError, printHelp, printSuccess} from "./domain/log.service.js";
 import {saveKeyValue, TOKEN_DICTIONARY} from "./domain/storage.service.js";
 import {getWeather} from "./domain/api.service.js";
 
-export const saveToken = async (token: any) => {
+export const saveToken = async (token: string) => {
     if (!token.length) {
         printError('Не передан токен!')
         return;
