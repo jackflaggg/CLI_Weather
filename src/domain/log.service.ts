@@ -1,4 +1,5 @@
 import chalk from 'chalk'
+import dedent from 'dedent'
 
 export const printError = (error: string) => {
     console.log(chalk.bgRed(' ERROR ') + ' ' + error)
@@ -10,7 +11,7 @@ export const printSuccess = (msg: string) => {
 
 export const printHelp = () => {
     console.log(
-        `${chalk.bgCyan(' HELP ')} 
+        dedent`${chalk.bgCyan(' HELP ')} 
         Без параметров - вывод погоды
         -s [CITY] для установки города
         -h для вывода помощи
