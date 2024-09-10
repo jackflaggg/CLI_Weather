@@ -1,8 +1,8 @@
-export const getArgs = (args: string) => {
-    const res = {};
+export const getArgs = (args) => {
+    const res = { };
     const [executor, file, ...rest] = args;
 
-    rest.forEach((value: string, index: number, arr: string[]) => {
+    rest.forEach((value, index, arr) => {
         if (value.charAt(0) === '-') {
             if (index === arr.length - 1) {
                 res[value.substring(1)] = true;
