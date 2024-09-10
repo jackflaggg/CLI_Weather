@@ -2,7 +2,7 @@ import { homedir } from 'os'
 import { join } from 'path'
 import { promises } from 'fs'
 
-export const filePath = join(homedir(), '../weather-data.json');
+export const filePath = join(homedir(), 'weather-data.json');
 
 export const saveKeyValue = async (key: string, value: any) => {
     let data: Record<string, any> = {};
