@@ -5,7 +5,7 @@ import { promises } from 'fs'
 export const filePath = join(homedir(), '../weather-data.json');
 
 export const saveKeyValue = async (key: string, value: any) => {
-    const data: Record<string, any> = {};
+    let data: Record<string, any> = {};
 
     if (await isExist(filePath)){
         const file = await promises.readFile(filePath, 'utf8')
