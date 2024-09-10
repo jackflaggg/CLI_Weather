@@ -9,7 +9,7 @@ export const getWeather = async (city: string) => {
         throw new Error('Не задан ключ API, задайте его через команду -t [API_KEY]')
     }
 
-
+    const { } = await axios.get()
     // const url = new URL('https://api.openweathermap.org/data/2.5/weather');
     //
     // url.searchParams.append('q', city);
