@@ -4,6 +4,7 @@ import {saveKeyValue} from "./domain/storage.service.js";
 
 export const saveToken = async (token: any) => {
     if (!token.length) {
+        printError('Не передан токен!')
         return;
     }
     try {
