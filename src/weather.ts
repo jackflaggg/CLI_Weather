@@ -1,5 +1,6 @@
 import {getArgs} from "./helpers/args.js";
 import {printError, printHelp, printSuccess} from "./domain/log.service.js";
+import {saveKeyValue} from "./domain/storage.service.js";
 
 
 const initCLI = (msg?: string) => {
@@ -11,11 +12,11 @@ const initCLI = (msg?: string) => {
     }
 
     if (args.s) {
-        printSuccess('suc');
+
     }
 
     if (args.t) {
-        printError('no')
+        saveKeyValue('token', args.t);
     }
 };
 
