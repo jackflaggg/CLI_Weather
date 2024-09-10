@@ -1,6 +1,6 @@
 import {getArgs} from "./helpers/args.js";
 import {printError, printHelp, printSuccess} from "./domain/log.service.js";
-import {saveKeyValue} from "./domain/storage.service.js";
+import {saveKeyValue, TOKEN_DICTIONARY} from "./domain/storage.service.js";
 
 export const saveToken = async (token: any) => {
     if (!token.length) {
@@ -8,7 +8,7 @@ export const saveToken = async (token: any) => {
         return;
     }
     try {
-        await saveKeyValue('token', token);
+        await saveKeyValue(TOKEN_DICTIONARY.token, token);
         printSuccess('токен сохранен')
     } catch (e: unknown) {
         printError(e)

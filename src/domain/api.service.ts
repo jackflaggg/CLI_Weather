@@ -1,9 +1,9 @@
 import https from 'https';
-import {getKeyValue} from "./storage.service.js";
+import {getKeyValue, TOKEN_DICTIONARY} from "./storage.service.js";
 
 
-const getWeather = async (city: string, key: string) => {
-    const token = await getKeyValue(key);
+const getWeather = async (city: string) => {
+    const token = await getKeyValue(TOKEN_DICTIONARY.token);
 
     const url = new URL(`https://api.openweathermap.org/data/2.5/weather`);
 
