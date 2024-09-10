@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "type": "module",
   "devDependencies": {
     "@types/chalk": "^2.2.0",
     "@types/cors": "^2.8.17",
