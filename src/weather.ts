@@ -3,6 +3,9 @@ import {printError, printHelp, printSuccess} from "./domain/log.service.js";
 import {saveKeyValue} from "./domain/storage.service.js";
 
 export const saveToken = async (token: any) => {
+    if (!token.length) {
+        return;
+    }
     try {
         await saveKeyValue('token', token);
         printSuccess('токен сохранен')
