@@ -15,6 +15,11 @@ export const saveToken = async (token: any) => {
         printError(e)
     }
 }
+
+export const getForCast = async () => {
+    const weather = await getWeather('moscow');
+    console.log(weather)
+}
 const initCLI = (): void | any => {
     const args = getArgs(process.argv);
 
@@ -29,7 +34,7 @@ const initCLI = (): void | any => {
     if (args.t) {
         return saveToken(args.t);
     }
-    getWeather('moscow')
+    getForCast()
 };
 
 initCLI();
