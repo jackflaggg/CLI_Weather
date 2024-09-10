@@ -34,6 +34,7 @@ const initCLI = (): void | any => {
     if (args.t) {
         return saveToken(args.t);
     }
+
     getForCast()
 };
 
