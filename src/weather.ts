@@ -10,8 +10,8 @@ export const saveToken = async (token: any) => {
         printError(e)
     }
 }
-const initCLI = () => {
-    const args = getArgs(process.argv)
+const initCLI = (): void | any => {
+    const args = getArgs(process.argv);
 
     if (args.h) {
         printHelp();
