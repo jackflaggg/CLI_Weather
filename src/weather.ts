@@ -1,6 +1,7 @@
 import {getArgs} from "./helpers/args.js";
 import {printError, printHelp, printSuccess} from "./domain/log.service.js";
 import {saveKeyValue, TOKEN_DICTIONARY} from "./domain/storage.service.js";
+import {getWeather} from "./domain/api.service.js";
 
 export const saveToken = async (token: any) => {
     if (!token.length) {
@@ -28,6 +29,7 @@ const initCLI = (): void | any => {
     if (args.t) {
         return saveToken(args.t);
     }
+    getWeather('moscow')
 };
 
 initCLI();
