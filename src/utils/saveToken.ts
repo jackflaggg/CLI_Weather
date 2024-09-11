@@ -1,5 +1,5 @@
-import {printError, printSuccess} from "../domain/log.service";
-import {saveKeyValue, TOKEN_DICTIONARY} from "../domain/storage.service";
+import {printError, printSuccess} from "../domain/log.service.js";
+import {saveKeyValue, TOKEN_DICTIONARY} from "../domain/storage.service.js";
 
 export const saveToken = async (token: string) => {
     if (!token.length) {

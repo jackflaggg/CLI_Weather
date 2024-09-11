@@ -1,7 +1,7 @@
-import {printError, printSuccess} from "../domain/log.service";
-import {getKeyValue, saveKeyValue, TOKEN_DICTIONARY} from "../domain/storage.service";
+import {getKeyValue, saveKeyValue, TOKEN_DICTIONARY} from "../domain/storage.service.js";
+import {printError, printSuccess} from "../domain/log.service.js";
 
-export const saveCity = async (city: string[]) => {
+export const saveCity = async (city: string[] | string) => {
     if (!city.length) {
         printError('Не передан ни один город!')
         return;

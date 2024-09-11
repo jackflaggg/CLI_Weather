@@ -1,8 +1,7 @@
-import {printError, printSuccess} from "./log.service";
-import {saveKeyValue, TOKEN_DICTIONARY} from "./storage.service";
+import {printError, printSuccess} from "./log.service.js";
+import {saveKeyValue, TOKEN_DICTIONARY} from "./storage.service.js";
 
-
-let language = 'en'; // По умолчанию английский
+let language = 'en';
 
 export const setLanguage = async (lang: string) => {
     if (lang !== 'en' && lang !== 'ru') {

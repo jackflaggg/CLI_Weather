@@ -1,11 +1,11 @@
-import {getArgs} from "./helpers/args.js";
-import {printError, printHelp,  printWeather} from "./domain/log.service.js";
+import {isAPIError} from "./models/types.errors.js";
 import {getKeyValue, TOKEN_DICTIONARY} from "./domain/storage.service.js";
 import {getWeather} from "./domain/api.service.js";
-import {isAPIError} from "./models/types.errors.js";
-import {setLanguage} from "./domain/lang.service";
-import {saveCity} from "./utils/saveCities";
-import {saveToken} from "./utils/saveToken";
+import {printError, printHelp, printWeather} from "./domain/log.service.js";
+import {getArgs} from "./helpers/args.js";
+import {saveCity} from "./utils/saveCities.js";
+import {saveToken} from "./utils/saveToken.js";
+import {setLanguage} from "./domain/lang.service.js";
 
 export const getForCast = async () => {
     try {
@@ -39,7 +39,7 @@ const initCLI = () => {
     }
 
     if (args.s) {
-        return saveCity(args.s)
+        return saveCity(args.s as string)
     }
 
     if (args.t) {
