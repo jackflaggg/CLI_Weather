@@ -1,46 +1,21 @@
-#!/usr/bin/env node
-
 import {getArgs} from "./helpers/args.js";
-import {printError, printHelp, printSuccess, printWeather} from "./domain/log.service.js";
-import {getKeyValue, saveKeyValue, TOKEN_DICTIONARY} from "./domain/storage.service.js";
+import {printError, printHelp,  printWeather} from "./domain/log.service.js";
+import {getKeyValue, TOKEN_DICTIONARY} from "./domain/storage.service.js";
 import {getWeather} from "./domain/api.service.js";
 import {isAPIError} from "./models/types.errors.js";
-
-export const saveToken = async (token: string) => {
-    if (!token.length) {
-        printError('Не передан токен!')
-        return;
-    }
-    try {
-        await saveKeyValue(TOKEN_DICTIONARY.token, token);
-        printSuccess('токен сохранен')
-    } catch (e: unknown) {
-        printError(e)
-    }
-}
-
-export const saveCity = async (city: string) => {
-    if (!city.length) {
-        printError('Не передан город!')
-        return;
-    }
-    try {
-        await saveKeyValue(TOKEN_DICTIONARY.city, city);
-        printSuccess('город сохранен')
-    } catch (e: unknown) {
-        printError(e)
-    }
-}
+import {setLanguage} from "./domain/lang.service";
+import {saveCity} from "./utils/saveCities";
+import {saveToken} from "./utils/saveToken";
 
 export const getForCast = async () => {
     try {
-        const city = process.env.CITY ?? await getKeyValue(TOKEN_DICTIONARY.city);
+        const city = process.env.CITY ? process.env.CITY.split(' ') : await getKeyValue(TOKEN_DICTIONARY.city);
 
-        const weather = await getWeather(city);
-
-        printWeather(weather ,getWeather(weather.weather[0].icon))
-
-        console.log(weather)
+        for (const cityElement of city) {
+            const weather = await getWeather(cityElement.trim());
+            printWeather(weather ,getWeather(weather.weather[0].icon))
+            console.log(weather)
+        }
 
     } catch (error) {
         if (isAPIError(error)){
@@ -55,6 +30,7 @@ export const getForCast = async () => {
         console.log('непредвиденная ошибка: ' + error)
     }
 }
+
 const initCLI = () => {
     const args = getArgs(process.argv);
 
@@ -63,11 +39,15 @@ const initCLI = () => {
     }
 
     if (args.s) {
-        return saveCity(args.s as string)
+        return saveCity(args.s)
     }
 
     if (args.t) {
         return saveToken(args.t as string);
+    }
+
+    if (args.l) {
+        return setLanguage(args.l as string);
     }
 
     return getForCast()

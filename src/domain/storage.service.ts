@@ -9,14 +9,14 @@ export const TOKEN_DICTIONARY = {
     city: 'city',
 }
 
-export const saveKeyValue = async (key: string, value: any) => {
+export const saveKeyValue = async (key: string, value: string[]) => {
     let data: Record<string, any> = {};
 
     if (await isExist(filePath)){
         const file = await promises.readFile(filePath, 'utf8')
         data = JSON.parse(file)
     }
-    data[key] = value;
+    value.map((value: string) => data[key] = value)
     await promises.writeFile(filePath, JSON.stringify(data))
 }
 
