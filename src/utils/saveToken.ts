@@ -10,6 +10,6 @@ export const saveToken = async (token: string) => {
         await saveKeyValue(TOKEN_DICTIONARY.token, token);
         printSuccess('токен сохранен')
     } catch (e: unknown) {
-        printError(e)
+        printError(e as string)
     }
 }

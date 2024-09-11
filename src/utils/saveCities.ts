@@ -12,6 +12,6 @@ export const saveCity = async (city: string[] | string) => {
         await saveKeyValue(TOKEN_DICTIONARY.city, updatedCities);
         printSuccess('города сохранены')
     } catch (e: unknown) {
-        printError(e)
+        printError(e as string)
     }
 }

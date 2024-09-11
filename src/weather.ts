@@ -13,7 +13,7 @@ export const getForCast = async () => {
 
         for (const cityElement of city) {
             const weather = await getWeather(cityElement.trim());
-            printWeather(weather ,getWeather(weather.weather[0].icon))
+            printWeather(weather);
             console.log(weather);
         }
 
