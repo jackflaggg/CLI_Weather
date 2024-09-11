@@ -1,4 +1,4 @@
-import {isAPIError} from "./models/types.errors.js";
+import {HTTP_STATUSES, isAPIError} from "./models/types.errors.js";
 import {getKeyValue, TOKEN_DICTIONARY} from "./domain/storage.service.js";
 import {getWeather} from "./domain/api.service.js";
 import {printError, printHelp, printWeather} from "./domain/log.service.js";
@@ -14,15 +14,15 @@ export const getForCast = async () => {
         for (const cityElement of city) {
             const weather = await getWeather(cityElement.trim());
             printWeather(weather ,getWeather(weather.weather[0].icon))
-            console.log(weather)
+            console.log(weather);
         }
 
     } catch (error) {
         if (isAPIError(error)){
-            if (error.response?.status === 404){
+            if (error.response?.status === HTTP_STATUSES.NOT_FOUND_404){
                 printError('неверно указан город')
             }
-            if (error.response?.status === 401){
+            if (error.response?.status === HTTP_STATUSES.NOT_AUTHORIZATION_401){
                 printError('неверно указан токен')
             }
             printError('серверная ошибка')
