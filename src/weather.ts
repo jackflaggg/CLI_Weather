@@ -16,6 +16,7 @@ export const getForCast = async () => {
             printWeather(weather);
             console.log(weather);
         }
+        return;
 
     } catch (error) {
         if (isAPIError(error)){
@@ -28,6 +29,7 @@ export const getForCast = async () => {
             printError('серверная ошибка')
         }
         console.log('непредвиденная ошибка: ' + error)
+        return;
     }
 }
 
