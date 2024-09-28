@@ -13,3 +13,9 @@ export enum HTTP_STATUSES {
     NOT_AUTHORIZATION_401 = 401,
     NOT_FOUND_404 = 404,
 }
+
+export interface tokenDictionaryInt {
+    token: string,
+    city: string,
+    language: string,
+}

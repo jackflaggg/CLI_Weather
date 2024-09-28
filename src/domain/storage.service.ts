@@ -1,10 +1,11 @@
 import { homedir } from 'os'
 import { join } from 'path'
 import { promises } from 'fs'
+import {tokenDictionaryInt} from "../models/types.errors.js";
 
 export const filePath = join(homedir(), 'weather-data.json');
 
-export const tokenDictionary = {
+export const tokenDictionary: tokenDictionaryInt = {
     token: 'token',
     city: 'city',
     language: 'language',
@@ -22,7 +23,8 @@ export const saveKeyValue = async (key: string, value: string[] | string) => {
     }
 
     data[key] = value;
-    await promises.writeFile(filePath, JSON.stringify(data));
+    const writeFile = await promises.writeFile(filePath, JSON.stringify(data));
+    return;
 }
 
 export const getKeyValue = async (key: string) => {
