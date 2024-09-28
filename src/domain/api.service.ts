@@ -1,8 +1,8 @@
-import {getKeyValue, TOKEN_DICTIONARY} from "./storage.service.js";
+import {getKeyValue, tokenDictionary} from "./storage.service.js";
 import axios from "axios";
 
 export const getWeather = async (city: string = 'moscow') => {
-    const token = process.env.TOKEN ?? await getKeyValue(TOKEN_DICTIONARY.token);
+    const token = process.env.TOKEN ?? await getKeyValue(tokenDictionary.token);
 
     if(!token){
         throw new Error('Не задан ключ API, задайте его через команду -t [API_KEY]')

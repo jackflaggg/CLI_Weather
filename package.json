@@ -29,8 +29,10 @@
     "dev": "yarn nodemon --inspect dist/weather.js"
   },
   "dependencies": {
+    "@types/dotenv": "^8.2.0",
     "axios": "^1.7.7",
     "chalk": "^5.3.0",
-    "dedent": "^1.5.3"
+    "dedent": "^1.5.3",
+    "dotenv": "^16.4.5"
   }
 }

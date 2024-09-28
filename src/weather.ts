@@ -1,5 +1,5 @@
 import {HTTP_STATUSES, isAPIError} from "./models/types.errors.js";
-import {getKeyValue, TOKEN_DICTIONARY} from "./domain/storage.service.js";
+import {getKeyValue, tokenDictionary} from "./domain/storage.service.js";
 import {getWeather} from "./domain/api.service.js";
 import {printError, printHelp, printWeather} from "./domain/log.service.js";
 import {getArgs} from "./helpers/args.js";
@@ -9,7 +9,7 @@ import {setLanguage} from "./domain/lang.service.js";
 
 export const getForCast = async () => {
     try {
-        const city = process.env.CITY ? process.env.CITY.split(' ') : await getKeyValue(TOKEN_DICTIONARY.city);
+        const city = process.env.CITY ? process.env.CITY.split(' ') : await getKeyValue(tokenDictionary.city);
 
         for (const cityElement of city) {
             const weather = await getWeather(cityElement.trim());
