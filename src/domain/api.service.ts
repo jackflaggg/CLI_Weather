@@ -6,7 +6,7 @@ export const getWeather = async (city: string = 'moscow') => {
     const token = SETTINGS.token ?? await getKeyValue(tokenDictionary.token);
 
     if(!token){
-        throw new Error('Не задан ключ API, задайте его через команду -t [API_KEY]')
+        throw new Error('Не задан ключ API, задайте его через команду -t [API_KEY]');
     }
 
     const { data } = await axios.get(SETTINGS.weatherURL, {
