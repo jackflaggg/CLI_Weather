@@ -6,10 +6,11 @@ import {getArgs} from "./helpers/args.js";
 import {saveCity} from "./utils/saveCities.js";
 import {saveToken} from "./utils/saveToken.js";
 import {setLanguage} from "./domain/lang.service.js";
+import {SETTINGS} from "./settings.js";
 
 export const getForCast = async () => {
     try {
-        const city = process.env.CITY ? process.env.CITY.split(' ') : await getKeyValue(tokenDictionary.city);
+        const city = SETTINGS.city ? SETTINGS.city.split(' ') : await getKeyValue(tokenDictionary.city);
 
         for (const cityElement of city) {
             const weather = await getWeather(cityElement.trim());
@@ -21,12 +22,12 @@ export const getForCast = async () => {
     } catch (error) {
         if (isAPIError(error)){
             if (error.response?.status === HTTP_STATUSES.NOT_FOUND_404){
-                printError('неверно указан город')
+                printError('неверно указан город');
             }
             if (error.response?.status === HTTP_STATUSES.NOT_AUTHORIZATION_401){
-                printError('неверно указан токен')
+                printError('неверно указан токен');
             }
-            printError('серверная ошибка')
+            printError('серверная ошибка');
         }
         console.log('непредвиденная ошибка: ' + error)
         return;
@@ -41,7 +42,7 @@ const initCLI = () => {
     }
 
     if (args.s) {
-        return saveCity(args.s as string)
+        return saveCity(args.s as string);
     }
 
     if (args.t) {
@@ -52,7 +53,7 @@ const initCLI = () => {
         return setLanguage(args.l as string);
     }
 
-    return getForCast()
+    return getForCast();
 };
 
 initCLI();
